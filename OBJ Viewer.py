@@ -6,8 +6,8 @@ from OpenGL.arrays import vbo
 import ctypes
 
 gCamAng = 0.
-gCamHeight = 1.
-gCamDistance = 5
+gCamHeight = 3.
+gCamDistance = 8
 
 def render():
     global gCamAng, gCamHeight, gCamDistance
@@ -115,9 +115,9 @@ def key_callback(window, key, scancode, action, mods):
         elif key==glfw.KEY_W:
             gCamHeight += -.1
         elif key==glfw.KEY_A:
-            gCamDistance += .1
-        elif key==glfw.KEY_S:
             gCamDistance -= .1
+        elif key==glfw.KEY_S:
+            gCamDistance += .1
         elif key==glfw.KEY_Z:
             if flag == 0:
                 glPolygonMode(GL_FRONT_AND_BACK, GL_LINE)
