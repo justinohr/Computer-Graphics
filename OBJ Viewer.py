@@ -77,7 +77,7 @@ def drawObject():
         glBegin(GL_POLYGON)
         for vertex in face:
             parse = vertex.split('/')
-            if parse[2]:
+            if len(parse) > 2:
                 if int(parse[2]) > 0 :
                     glNormal3fv(gNormalArray[int(parse[2]) - 1])
                 else:
@@ -143,7 +143,9 @@ def drop_callback(window, paths):
         if not line:
             break
         parse = line.split()
-        if parse[0] == 'v':
+        if len(parse) == 0: # handle empty line
+            continue
+        elif parse[0] == 'v':
             for unit in parse[1:]:
                 temp.append(float(unit))
             gVertexArray.append(temp)
